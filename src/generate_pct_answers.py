@@ -1,7 +1,8 @@
 import argparse
 import os
-from vllm import LLM, SamplingParams
-from util.prompt_utils import generate_prompts_subsample
+import tqdm
+# from vllm import LLM, SamplingParams
+from util.prompt_utils import generate_prompts, fill_prompt
 
 
 if __name__ == "__main__":
@@ -48,5 +49,13 @@ if __name__ == "__main__":
     with open(pct_questions_file) as file:
         pct_questions = [line.strip() for line in file]
 
-    prompts = generate_prompts_subsample(personas_file, instructions_file, n_categories=2)
+    print("here")
+    prompts = generate_prompts(personas_file, instructions_file, n_categories=2)
+
+    samples = []
+    options_list = []
+    prompt_options = []
+    for i, prompt_fields in enumerate((prompts)):
+        for j, question in enumerate(pct_questions):
+            prompt = fill_prompt(question=question, model=model_id, **prompt_fields)
 

@@ -1,37 +1,53 @@
-from typing import AnyStr
+from typing import AnyStr, Dict
 from itertools import combinations, product
 import json
 
+SYSTEM_OPENING = ""
 
+DEMOGRAPHIC_TEMPLATE = "Please follow all instructions from the perspective of a person who is {demographic}. Please write all responses in English."
 
-def generate_prompts_subsample(
+def generate_prompts(
         personas_file: AnyStr,
         instructions_file: AnyStr,
         n_categories: int = 2
         ):
-    
+
+    print("in here")
     with open(personas_file) as file:
         personas_json = json.load(file)
     with open(instructions_file) as file:
         instructions_json = json.load(file)
 
-    # Get combinations
-    fields = ['age', 'gender', 'political_orientation']
-    initial_combinations = []
-    for combo in combinations(fields, n_categories):
-        print(combo)
-        options_closed = {key:personas_json[key] for key in combo}
-        print(options_closed)
-        options_closed['instruction'] = [{'text': inst, 'type': 'closed_domain'} for inst in instructions_json['closed_domain']]
-        print(options_closed)
+    initial_combinations = list(product(personas_json['age'], personas_json['gender'], personas_json['political_orientation'], instructions_json['closed_domain'])) + \
+                            list(product(personas_json['age'], personas_json['gender'], personas_json['political_orientation'], instructions_json['open_domain']))
+    for comb in initial_combinations:
+        out_comb = comb + (personas_json['party'][comb[3]][comb[4]],)
+        yield out_comb
 
-        options_open = {key:personas_json[key] for key in combo}
-        options_open['instruction'] = [{'text': inst, 'type': 'open_domain'} for inst in instructions_json['open_domain']]
+def fill_prompt(
+        instruction: Dict,
+        question: AnyStr,
+        age: AnyStr = '',
+        gender: AnyStr = '',
+        cls: AnyStr = '',
+        nation: AnyStr = '',
+        political_orientation: AnyStr = '',
+        party: AnyStr = '',
+        model: AnyStr="llama",
+        **kwargs
+        ):
+    system_prompt = SYSTEM_OPENING
+    age = age if age == '' else age + ' years old'
+    political_orientation = political_orientation if political_orientation == '' else f"has {political_orientation} politcal views"
+    
+    demographincs = [demo for demo in [age, gender, political_orientation] if demo != '']
+    if len(demographincs) > 0:
+        system_prompt += DEMOGRAPHIC_TEMPLATE + ' '
+    
+        demo_string = ' '.join(demographincs)
+        print(demo_string)
+        system_prompt = system_prompt.replace("{demographic}", demo_string)
+        print(system_prompt)
+    return demographincs
+    
 
-        initial_combinations.extend(
-            [dict(zip(options_closed.keys(), values)) for values in product(*options_closed.values())] +
-            [dict(zip(options_open.keys(), values)) for values in product(*options_open.values())]
-        )
-
-    print(initial_combinations)
-    return initial_combinations
