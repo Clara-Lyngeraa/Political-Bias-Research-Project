@@ -55,6 +55,6 @@ if __name__ == "__main__":
     samples = []
     options_list = []
     prompt_options = []
-    for i, prompt_fields in enumerate((prompts)):
+    for i, prompt_fields in enumerate(prompts):
         for j, question in enumerate(pct_questions):
             prompt = fill_prompt(question=question, model=model_id, **prompt_fields)

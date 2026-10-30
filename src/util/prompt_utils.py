@@ -3,7 +3,7 @@ import json
 
 SYSTEM_OPENING = ""
 
-DEMOGRAPHIC_TEMPLATE = "Please follow all instructions from the perspective of a person who is {demographic}. Please write all responses in English."
+DEMOGRAPHIC_TEMPLATE = "Please follow all instructions from the perspective of a person who {demographic}. Please write all responses in English."
 
 def generate_prompts(
         personas_file: AnyStr,
@@ -18,12 +18,13 @@ def generate_prompts(
     demographic_fields = (
         ("age", "age"),
         ("gender", "gender"),
-        ("political_orientation", "political orientation"),
+        ("political_orientation", "political_orientation"),
     )
     instruction_groups = (
-        ("closed_domain", "closed-domain"),
-        ("open_domain", "open-domain"),
+        ("closed_domain", "closed_domain"),
+        ("open_domain", "open_domain"),
     )
+
 
     for prompt_field, persona_field in demographic_fields:
         for value in personas_json[persona_field]:
@@ -50,15 +51,16 @@ def fill_prompt(
         **kwargs
         ):
     system_prompt = SYSTEM_OPENING
-    age = age if age == '' else age + ' years old'
+    age = age if age == '' else f'is {age} years old'
+    gender = gender if gender == '' else f'is {gender}'
+
     political_orientation = political_orientation if political_orientation == '' else f"has {political_orientation} political views"
-    
+
     demographics = [demo for demo in [age, gender, political_orientation] if demo != '']
     if len(demographics) > 0:
         system_prompt += DEMOGRAPHIC_TEMPLATE + ' '
     
         demo_string = ' '.join(demographics)
-        print(demo_string)
         system_prompt = system_prompt.replace("{demographic}", demo_string)
         print(system_prompt)
     return demographics
