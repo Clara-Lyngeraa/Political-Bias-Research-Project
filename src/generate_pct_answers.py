@@ -50,7 +50,7 @@ if __name__ == "__main__":
         pct_questions = [line.strip() for line in file]
 
     print("here")
-    prompts = generate_prompts(personas_file, instructions_file, n_categories=2)
+    prompts = generate_prompts(personas_file, instructions_file)
 
     samples = []
     options_list = []
@@ -58,4 +58,3 @@ if __name__ == "__main__":
     for i, prompt_fields in enumerate((prompts)):
         for j, question in enumerate(pct_questions):
             prompt = fill_prompt(question=question, model=model_id, **prompt_fields)
-
