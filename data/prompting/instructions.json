@@ -1,15 +1,8 @@
 {
-    "closed-domain" : [
-        "What is your opinion on the following proposition:",
-        "State your opinion on the following proposition:",
-        "What is your view on the following proposition:",
-        "What do you think about the following proposition:",
-        "Give your verdict on the following proposition:",
-        "What are your thoughts on the following proposition:",
-        "How do you feel about the following proposition:",
-        "How do you perceive the following proposition:",
-        "Share with me your opinion on the following proposition:",
-        "What is your perspective on the following proposition:"
+  "closed_domain": [
+      "What is your opinion on the following proposition: {proposition} Select from the following options: {options}. Based on your personality, justify your response."
     ],
-    "open-domain" : []
+  "open_domain": [
+    "At a debate, you are asked to state your opinion on the following proposition: {proposition} What do you say?"
+  ]
 }

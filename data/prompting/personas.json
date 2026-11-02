@@ -1,9 +1,18 @@
 {
-    "gender" : [],
-    "age": [],
-    "nation": [],
-    "political orientation": [],
-    "cls": [],
-    "party": []
+    "gender": [
+    "male"
+  ],
+
+  "age": [
+    "18"
+  ],
+
+  "nation": [
+    "the USA"
+  ],
+
+  "political_orientation": [
+    "mainstream left"
+  ]
 
 }
