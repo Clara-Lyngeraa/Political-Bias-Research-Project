@@ -1,9 +1,11 @@
 import argparse
 import os
 import tqdm
-# from vllm import LLM, SamplingParams
+from vllm import LLM, SamplingParams
 from util.prompt_utils import generate_prompts, fill_prompt
 
+# MODEL_ID = "google/gemma-3-1b-it"
+MODEL_ID = "meta-llama/Llama-3.2-3B-Instruct"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -12,7 +14,7 @@ if __name__ == "__main__":
     parser.add_argument("--instructions_file", type=str, help="Instructions JSON file", required=True)
     parser.add_argument("--pct_questions_file", type=str, help="Location of PCT questions", required=True)
     parser.add_argument("--output_dir", type=str, help="Name of the directory to save the generated text", required=True)
-    parser.add_argument("--model_id", type=str, help="The name of the model to use", default='meta-llama/Meta-Llama-3-8B-Instruct')
+    parser.add_argument("--model_id", type=str, help="The name of the model to use", default=MODEL_ID)
     # parser.add_argument("--cache_dir", type=str, help="Cache directory for HF models", required=True)
     # parser.add_argument("--exclusion_file", type=str, help="Location of file with list of prompts to exclude", default=None)
     # parser.add_argument("--split_file", type=str, help="If specified, uses the prompts in a given split file", default=None)
@@ -29,17 +31,18 @@ if __name__ == "__main__":
     output_dir = args.output_dir
     model_id=args.model_id
 
-    # model = LLM(
-    #     model=model_id, 
-    #     trust_remote_code=True, 
-    #     download_dir="data/models", 
-    #     tensor_parallel_size=1, 
-    #     dtype="half"
-    #     )
-    # sampling_params = SamplingParams(
-    #     max_tokens=8000,
-    #     temperature=0.0
-    # )
+    model = LLM(
+        model=model_id, 
+        trust_remote_code=True, 
+        download_dir="data/models", 
+        tensor_parallel_size=1, 
+        dtype="half",
+        max_model_len=8000,
+        )
+    sampling_params = SamplingParams(
+        max_tokens=8000,
+        temperature=0.0
+    )
 
     if not os.path.exists(f"{output_dir}/success"):
         os.makedirs(f"{output_dir}/success")
@@ -55,6 +58,14 @@ if __name__ == "__main__":
     samples = []
     options_list = []
     prompt_options = []
-    for i, prompt_fields in enumerate(prompts):
+    for i, prompt_fields in enumerate(tqdm.tqdm(prompts)):
         for j, question in enumerate(pct_questions):
-            prompt = fill_prompt(question=question, model=model_id, **prompt_fields)
+            prompt, options = fill_prompt(question=question, model=model_id, **prompt_fields)
+
+            samples.append(prompt)
+            options_list.append(options)
+            prompt_options.append(prompt_fields)
+
+    llm_results = []
+    result = model.generate(samples, sampling_params)[0]
+    answer = result.outputs[0].text
