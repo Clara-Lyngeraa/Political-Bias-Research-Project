@@ -12,7 +12,10 @@
   ],
 
   "political_orientation": [
-    "mainstream left"
+    "mainstream left",
+    "far left",
+    "mainstream right",
+    "far right"
   ]
 
 }
