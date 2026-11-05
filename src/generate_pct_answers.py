@@ -65,7 +65,7 @@ def main() -> None:
     )
     sampling_params = SamplingParams(
         max_tokens=args.max_tokens,
-        temperature=0.0,
+        temperature=1.0,
     )
 
     with open(args.pct_questions_file, encoding="utf-8") as file:
