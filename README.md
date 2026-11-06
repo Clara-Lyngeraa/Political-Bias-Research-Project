@@ -7,8 +7,8 @@ source ~/.venv-vllm-metal/bin/activate
 
 ```bash
 python3 src/generate_pct_answers.py \
-  --personas_file data/prompting/personas.json \
-  --instructions_file data/prompting/instructions.json \
+  --personas_file data/prompting/personas_small.json \
+  --instructions_file data/prompting/instructions_small.json \
   --pct_questions_file data/pct/political_compass_questions.txt \
   --output_dir data/output \
   --model_id meta-llama/Llama-3.2-1B-Instruct
@@ -17,6 +17,28 @@ python3 src/generate_pct_answers.py \
 Generated responses are written to `../data/output/responses.jsonl`, one JSON
 record per prompt. Generation defaults to batches of 8 prompts and a maximum
 response length of 512 tokens. Adjust these with `--batch_size` and `--max_tokens`.
+
+Running other models:
+
+```bash
+# OLMo 3 7B: fits on one GPU
+python3 src/generate_pct_answers.py \
+  --personas_file data/prompting/personas.json \
+  --instructions_file data/prompting/instructions.json \
+  --pct_questions_file data/pct/political_compass_questions.txt \
+  --output_dir data/output \
+  --model_id allenai/Olmo-3-7B-Instruct \
+  --dtype bfloat16
+
+# Llama 3.3 70B: needs sharding (or quantization)
+python3 src/generate_pct_answers.py \
+   --personas_file data/prompting/personas.json \
+  --instructions_file data/prompting/instructions.json \
+  --pct_questions_file data/pct/political_compass_questions.txt \
+  --output_dir data/output \
+  --model_id meta-llama/Llama-3.3-70B-Instruct \
+  --tensor_parallel_size 4 --dtype bfloat16
+```
 
 ## Visualizing responses
 

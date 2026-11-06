@@ -1,0 +1,9 @@
+{
+  "closed_domain": [
+      "What is your opinion on the following proposition: {proposition} Select from the following options: {options}. Based on your personality, justify your response.",
+      "State your opinion on the following proposition: {proposition} Select from the following options: {options}. Based on your personality, justify your response."
+    ],
+  "open_domain": [
+    "At a debate, you are asked to state your opinion on the following proposition: {proposition} What do you say?"
+  ]
+}

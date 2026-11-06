@@ -1,4 +1,5 @@
 import argparse
+from email import parser
 import json
 import os
 from typing import TextIO
@@ -6,10 +7,12 @@ from typing import TextIO
 import tqdm
 from vllm import LLM, SamplingParams
 
-from util.prompt_utils import PRIMER_STRING, fill_prompt, generate_prompts
+from util.prompt_utils import PRIMER_STRING, fill_prompt, generate_prompts, get_instruction_template
 
 MODEL_ID = "meta-llama/Llama-3.2-1B-Instruct"
 
+def model_slug(model_id: str) -> str:
+    return model_id.replace("/", "__")
 
 def save_batch(model, sampling_params, prompts, records, output_file: TextIO) -> int:
     results = model.generate(prompts, sampling_params)
@@ -41,13 +44,18 @@ def save_batch(model, sampling_params, prompts, records, output_file: TextIO) ->
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--personas_file", type=str, help="Personas JSON file", required=True)
-    parser.add_argument("--instructions_file", type=str, help="Instructions JSON file", required=True)
-    parser.add_argument("--pct_questions_file", type=str, help="Location of PCT questions", required=True)
-    parser.add_argument("--output_dir", type=str, help="Directory for generated responses", required=True)
-    parser.add_argument("--model_id", type=str, help="The name of the model to use", default=MODEL_ID)
+    parser.add_argument("--personas_file", type=str, required=True, help="Personas JSON file")
+    parser.add_argument("--instructions_file", type=str, required=True, help="Instructions JSON file")
+    parser.add_argument("--pct_questions_file", type=str, required=True, help="Location of PCT questions")
+    parser.add_argument("--output_dir", type=str, required=True, help="Base directory for generated responses")
+    parser.add_argument("--model_id", type=str, default=MODEL_ID, help="HF model id (must be in INSTRUCTION_TEMPLATES)")
     parser.add_argument("--batch_size", type=int, default=8, help="Prompts to generate at a time")
     parser.add_argument("--max_tokens", type=int, default=512, help="Maximum completion length")
+    parser.add_argument("--tensor_parallel_size", type=int, default=1, help="Number of GPUs to shard the model over")
+    parser.add_argument("--dtype", type=str, default="half", help="half | bfloat16 | float16 | auto")
+    parser.add_argument("--quantization", type=str, default=None, help="Optional vLLM quantization, e.g. fp8, awq")
+    parser.add_argument("--max_model_len", type=int, default=8000)
+    parser.add_argument("--download_dir", type=str, default="data/models")
     args = parser.parse_args()
 
     if args.batch_size < 1:
@@ -55,13 +63,17 @@ def main() -> None:
     if args.max_tokens < 1:
         parser.error("--max_tokens must be greater than zero")
 
+    # Get_instructions_template
+    get_instruction_template(args.model_id)
+
     model = LLM(
         model=args.model_id,
         trust_remote_code=True,
-        download_dir="data/models",
-        tensor_parallel_size=1,
-        dtype="half",
-        max_model_len=8000,
+        download_dir=args.download_dir,
+        tensor_parallel_size=args.tensor_parallel_size,
+        dtype=args.dtype,
+        quantization=args.quantization,
+        max_model_len=args.max_model_len,
     )
     sampling_params = SamplingParams(
         max_tokens=args.max_tokens,
@@ -75,17 +87,15 @@ def main() -> None:
     )
     total_answers = len(prompt_fields_list) * len(pct_questions)
 
-    os.makedirs(args.output_dir, exist_ok=True)
-    output_path = os.path.join(args.output_dir, "responses.jsonl")
+    model_dir = os.path.join(args.output_dir, model_slug(args.model_id))
+    os.makedirs(model_dir, exist_ok=True)
+    output_path = os.path.join(model_dir, "responses.jsonl")
+
     batch_prompts = []
     batch_records = []
     prompt_index = 0
     with open(output_path, "w", encoding="utf-8") as output_file:
-        with tqdm.tqdm(
-            total=total_answers,
-            desc="Generating answers",
-            unit="answer",
-        ) as progress:
+        with tqdm.tqdm(total=total_answers, desc=f"Generating ({args.model_id})", unit="answer") as progress:
             for prompt_fields in prompt_fields_list:
                 for question in pct_questions:
                     prompt, options = fill_prompt(
@@ -97,6 +107,7 @@ def main() -> None:
                     batch_records.append(
                         {
                             "prompt_index": prompt_index,
+                            "model": args.model_id,
                             "question": question,
                             "options": options,
                             **prompt_fields,
