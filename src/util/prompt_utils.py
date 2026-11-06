@@ -15,33 +15,54 @@ FORMAT_STRING = {
 
 OPTION_TEXT = ['Strongly disagree', 'Disagree', 'Agree', 'Strongly agree']
 
+# Official Llama-3 chat format (blank line after every header).
+LLAMA3_TEMPLATE = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+"""
+
+# The template your existing Llama-3.2 results were generated with.
+# NOTE: only ONE newline after the system/user headers (the official format has two).
+# Kept as-is so old runs stay reproducible.
+LEGACY_LLAMA3_TEMPLATE = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
+{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+"""
+
+# ChatML-style format (<|im_start|> / <|im_end|>), used by OLMo 3.
+CHATML_TEMPLATE = """<|im_start|>system
+{system_prompt}<|im_end|>
+<|im_start|>user
+{instruction}<|im_end|>
+<|im_start|>assistant
+"""
+
 INSTRUCTION_TEMPLATES = {
- "meta-llama/Meta-Llama-3-8B-Instruct": """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
-{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-
-""",
- "meta-llama/Llama-3.2-3B-Instruct": """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
-{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-
-""",
- "meta-llama/Llama-3.2-1B-Instruct": """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
-{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-
-""",
- "google/gemma-3-1b-it": """<bos><start_of_turn>user
-{system_prompt}
-{instruction}<end_of_turn>
-<start_of_turn>model
-""",
+    "meta-llama/Meta-Llama-3-8B-Instruct": LEGACY_LLAMA3_TEMPLATE,
+    "meta-llama/Llama-3.2-3B-Instruct": LEGACY_LLAMA3_TEMPLATE,
+    "meta-llama/Llama-3.2-1B-Instruct": LEGACY_LLAMA3_TEMPLATE,
+    "meta-llama/Llama-3.3-70B-Instruct": LLAMA3_TEMPLATE,
+    "allenai/Olmo-3-7B-Instruct": CHATML_TEMPLATE,
 }
 
 PRIMER_STRING = {
     'closed_domain': '{ "selection": "',
     'open_domain': '{ "response": "'
 }
+
+def get_instruction_template(model: str) -> str:
+    try:
+        return INSTRUCTION_TEMPLATES[model]
+    except KeyError:
+        raise ValueError(
+            f"No chat template registered for '{model}'. "
+            f"Add it to INSTRUCTION_TEMPLATES in util/prompt_utils.py. "
+            f"Supported: {', '.join(INSTRUCTION_TEMPLATES)}"
+        ) from None
 
 def generate_prompts(
         personas_file: AnyStr,
@@ -86,7 +107,7 @@ def fill_prompt(
         nation: AnyStr = '',
         political_orientation: AnyStr = '',
         party: AnyStr = '',
-        model: AnyStr="meta-llama/Llama-3.2-1B-Instruct",
+        model: AnyStr= '',
         **kwargs
         ):
     system_prompt = SYSTEM_OPENING
@@ -118,7 +139,7 @@ def fill_prompt(
     else:
         options = OPTION_TEXT
 
-    prompt = INSTRUCTION_TEMPLATES[model]
+    prompt = get_instruction_template(model)
     prompt = prompt.replace("{system_prompt}", system_prompt)
     prompt = prompt.replace("{instruction}", instruction_prompt)
 
