@@ -16,17 +16,17 @@ FORMAT_STRING = {
 OPTION_TEXT = ['Strongly disagree', 'Disagree', 'Agree', 'Strongly agree']
 
 INSTRUCTION_TEMPLATES = {
- "meta-llama/Meta-Llama-3-8B-Instruct": """"<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+ "meta-llama/Meta-Llama-3-8B-Instruct": """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
 {system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
 {instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 
 """,
- "meta-llama/Llama-3.2-3B-Instruct": """"<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+ "meta-llama/Llama-3.2-3B-Instruct": """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
 {system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
 {instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 
 """,
- "meta-llama/Llama-3.2-1B-Instruct": """"<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+ "meta-llama/Llama-3.2-1B-Instruct": """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
 {system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
 {instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 

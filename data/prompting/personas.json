@@ -1,18 +1,27 @@
 {
-    "gender": [
-    "male"
+  "gender": [
+    "male",
+    "female",
+    "non-binary"
   ],
-
-  "age": [
-    "18"
+    "age": [
+    "18",
+    "26",
+    "48",
+    "65",
+    "81"
   ],
-
   "nation": [
-    "the USA"
+    "the USA",
+    "Denmark",
+    "India",
+    "Brazil",
+    "South Korea"
   ],
-
   "political_orientation": [
-    "mainstream left"
+    "mainstream left",
+    "far left",
+    "mainstream right",
+    "far right"
   ]
-
 }
