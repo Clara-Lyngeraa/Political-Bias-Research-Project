@@ -1,0 +1,8 @@
+[project]
+name = "political-bias-research-project"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "ollama>=0.6.3",
+    "tqdm>=4.70.1",
+]

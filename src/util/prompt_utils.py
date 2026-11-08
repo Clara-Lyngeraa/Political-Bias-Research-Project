@@ -42,10 +42,9 @@ CHATML_TEMPLATE = """<|im_start|>system
 """
 
 INSTRUCTION_TEMPLATES = {
-    "meta-llama/Meta-Llama-3-8B-Instruct": LEGACY_LLAMA3_TEMPLATE,
-    "meta-llama/Llama-3.2-3B-Instruct": LEGACY_LLAMA3_TEMPLATE,
-    "meta-llama/Llama-3.2-1B-Instruct": LEGACY_LLAMA3_TEMPLATE,
-    "meta-llama/Llama-3.3-70B-Instruct": LLAMA3_TEMPLATE,
+    "llama3.1:8b": LEGACY_LLAMA3_TEMPLATE,
+    "llama3.2:1b": LEGACY_LLAMA3_TEMPLATE,
+    "llama3.3:70b": LLAMA3_TEMPLATE,
     "allenai/Olmo-3-7B-Instruct": CHATML_TEMPLATE,
 }
 
