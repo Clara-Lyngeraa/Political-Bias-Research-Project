@@ -22,6 +22,7 @@ uv run python src/generate_pct_answers.py \
   --pct_questions_file data/pct/political_compass_questions.txt \
   --output_dir data/output \
   --model_id llama3.3:70b
+  --tensor_parallel_size 4 --dtype bfloat16
 ```
 
 Generated responses are written to `../data/output/responses.jsonl`, one JSON
