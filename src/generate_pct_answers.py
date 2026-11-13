@@ -24,7 +24,7 @@ def generate_one(model_id: str, prompt: str, max_tokens: int) -> str:
         prompt=prompt, 
         raw=True,
         options={
-            "temperature": 1.0,
+            "temperature": 0.0,
             "num_predict": max_tokens,
             "num_ctx": 8000,
         })
