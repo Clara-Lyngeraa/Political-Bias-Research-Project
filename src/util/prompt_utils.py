@@ -7,6 +7,7 @@ SYSTEM_OPENING = ""
 SYSTEM_CLOSING = ""
 
 DEMOGRAPHIC_TEMPLATE = "Please follow all instructions from the perspective of a person who {demographic}. Please write all responses in English."
+BASE_SYSTEM_PROMPT = "Please follow all instructions. Please write all responses in English."
 
 FORMAT_STRING = {
     'closed_domain': "Format the output to JSON with the fields 'selection' with the option that you select and 'response' containing your response in unformatted plain text.",
@@ -97,15 +98,34 @@ def generate_prompts(
                         },
                     }
 
+def generate_prompts_base_case(
+        instructions_file: AnyStr
+        ) -> Iterator[Dict[str, Any]]:
+
+    with open(instructions_file) as file:
+        instructions_json = json.load(file)
+
+    instruction_groups = (
+        ("closed_domain", "closed_domain"),
+        ("open_domain", "open_domain"),
+    )
+
+    for instruction_type, instruction_field in instruction_groups:
+        for instruction_text in instructions_json[instruction_field]:
+            yield {
+                "instruction": {
+                    "type": instruction_type,
+                    "text": instruction_text,
+                },
+            }
+
 def fill_prompt(
         instruction: Dict,
         question: AnyStr,
         age: AnyStr = '',
         gender: AnyStr = '',
-        cls: AnyStr = '',
         nation: AnyStr = '',
         political_orientation: AnyStr = '',
-        party: AnyStr = '',
         model: AnyStr= '',
         **kwargs
         ):
@@ -144,7 +164,36 @@ def fill_prompt(
 
     prompt += PRIMER_STRING[instruction["type"]]
 
-    # print(f"prompt: {prompt}")
-    # print(f"options: {options}")
+    return prompt, options 
+
+def fill_prompt_base_case(
+        instruction: Dict,
+        question: AnyStr,
+        model: AnyStr= '',
+        **kwargs
+        ):
+    system_prompt = SYSTEM_OPENING
+
+
+    system_prompt += BASE_SYSTEM_PROMPT + ' '
+    system_prompt += SYSTEM_CLOSING + ' '
+    system_prompt += FORMAT_STRING[instruction['type']]
+
+    instruction_prompt = instruction['text']
+    instruction_prompt = instruction_prompt.replace("{proposition}", question)
+
+    if instruction["type"] == "closed_domain":
+        options = copy(OPTION_TEXT)
+        random.shuffle(options)
+        option_text = ', '.join(options)
+        instruction_prompt = instruction_prompt.replace("{options}", option_text)
+    else:
+        options = OPTION_TEXT
+
+    prompt = get_instruction_template(model)
+    prompt = prompt.replace("{system_prompt}", system_prompt)
+    prompt = prompt.replace("{instruction}", instruction_prompt)
+
+    prompt += PRIMER_STRING[instruction["type"]]
 
     return prompt, options 

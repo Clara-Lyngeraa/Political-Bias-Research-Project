@@ -1,15 +1,13 @@
 import argparse
-from email import parser
+from fileinput import filename
 import json
 import os
-from typing import TextIO
-
+from typing import Any, Dict, TextIO
 import tqdm
-# from vllm import LLM, SamplingParams
 import ollama
 from concurrent.futures import ThreadPoolExecutor
 
-from util.prompt_utils import PRIMER_STRING, fill_prompt, generate_prompts, get_instruction_template
+from util.prompt_utils import PRIMER_STRING, fill_prompt, fill_prompt_base_case, generate_prompts, generate_prompts_base_case, get_instruction_template
 
 MODEL_ID = "llama3:8b"
 
@@ -53,6 +51,71 @@ def save_batch(model, max_tokens, executor, prompts, records, output_file: TextI
     output_file.write("\n".join(serialized_records) + "\n")
     return len(serialized_records)
 
+def execute_batch(
+        output_path: str, 
+        args: argparse.Namespace, 
+        total_answers: int, 
+        prompt_instructions: list[Dict[str, Any]],
+        pct_questions: list[str],
+        batch_prompts: list,
+        batch_records: list,
+        prompt_index: int) -> None:
+    with open(output_path, "w", encoding="utf-8") as output_file:
+                with ThreadPoolExecutor(max_workers=args.batch_size) as executor:
+                    with tqdm.tqdm(total=total_answers, desc=f"Generating ({args.model_id})", unit="answer") as progress:
+                        for prompt_fields in prompt_instructions:
+                            for question in pct_questions:
+                                prompt, options = None, None
+
+                                if args.base_case:
+                                    prompt, options = fill_prompt_base_case(
+                                        question=question,
+                                        model=args.model_id,
+                                        **prompt_fields,
+                                    )
+                                else:
+                                    prompt, options = fill_prompt(
+                                        question=question,
+                                        model=args.model_id,
+                                        **prompt_fields,
+                                    )
+                                batch_prompts.append(prompt)
+                                batch_records.append(
+                                    {
+                                        "prompt_index": prompt_index,
+                                        "model": args.model_id,
+                                        "question": question,
+                                        "options": options,
+                                        **prompt_fields,
+                                    }
+                                )
+                                prompt_index += 1
+    
+                                if len(batch_prompts) == args.batch_size:
+                                    progress.update(
+                                        save_batch(
+                                            args.model_id,
+                                            args.max_tokens,
+                                            executor,
+                                            batch_prompts,
+                                            batch_records,
+                                            output_file,
+                                        )
+                                    )
+                                    batch_prompts.clear()
+                                    batch_records.clear()
+    
+                        if batch_prompts:
+                            progress.update(
+                                save_batch(
+                                    args.model_id,
+                                    args.max_tokens,
+                                    executor,
+                                    batch_prompts,
+                                    batch_records,
+                                    output_file,
+                                )
+                            )
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -68,6 +131,7 @@ def main() -> None:
     parser.add_argument("--quantization", type=str, default=None, help="Optional vLLM quantization, e.g. fp8, awq")
     parser.add_argument("--max_model_len", type=int, default=8000)
     parser.add_argument("--download_dir", type=str, default="data/models")
+    parser.add_argument("--base_case", action="store_true")
     args = parser.parse_args()
 
     if args.batch_size < 1:
@@ -78,81 +142,84 @@ def main() -> None:
     # Get_instructions_template
     get_instruction_template(args.model_id)
 
-    # model = LLM(
-    #     model=args.model_id,
-    #     trust_remote_code=True,
-    #     download_dir=args.download_dir,
-    #     tensor_parallel_size=args.tensor_parallel_size,
-    #     dtype=args.dtype,
-    #     quantization=args.quantization,
-    #     max_model_len=args.max_model_len,
-    # )
-    # sampling_params = SamplingParams(
-    #     max_tokens=args.max_tokens,
-    #     temperature=1.0,
-    # )
-
     with open(args.pct_questions_file, encoding="utf-8") as file:
         pct_questions = [line.strip() for line in file if line.strip()]
-    prompt_fields_list = list(
-        generate_prompts(args.personas_file, args.instructions_file)
-    )
-    total_answers = len(prompt_fields_list) * len(pct_questions)
+
+    prompt_instructions = [{}]
+    if args.base_case:
+        prompt_instructions = list(generate_prompts_base_case(args.instructions_file))
+    else:
+        prompt_instructions = list(
+            generate_prompts(args.personas_file, args.instructions_file)
+        )
+    total_answers = len(prompt_instructions) * len(pct_questions)
 
     model_dir = os.path.join(args.output_dir, model_slug(args.model_id))
     os.makedirs(model_dir, exist_ok=True)
-    output_path = os.path.join(model_dir, "responses.jsonl")
+    filename = "responses_base.jsonl" if args.base_case else "responses.jsonl" 
+    output_path = os.path.join(model_dir, filename)
 
     batch_prompts = []
     batch_records = []
     prompt_index = 0
-    with open(output_path, "w", encoding="utf-8") as output_file:
-        with ThreadPoolExecutor(max_workers=args.batch_size) as executor:
-            with tqdm.tqdm(total=total_answers, desc=f"Generating ({args.model_id})", unit="answer") as progress:
-                for prompt_fields in prompt_fields_list:
-                    for question in pct_questions:
-                        prompt, options = fill_prompt(
-                            question=question,
-                            model=args.model_id,
-                            **prompt_fields,
-                        )
-                        batch_prompts.append(prompt)
-                        batch_records.append(
-                            {
-                                "prompt_index": prompt_index,
-                                "model": args.model_id,
-                                "question": question,
-                                "options": options,
-                                **prompt_fields,
-                            }
-                        )
-                        prompt_index += 1
 
-                        if len(batch_prompts) == args.batch_size:
-                            progress.update(
-                                save_batch(
-                                    args.model_id,
-                                    args.max_tokens,
-                                    executor,
-                                    batch_prompts,
-                                    batch_records,
-                                    output_file,
-                                )
-                            )
-                            batch_prompts.clear()
-                            batch_records.clear()
+    execute_batch(
+        output_path=output_path,
+        args=args,
+        total_answers=total_answers,
+        prompt_instructions=prompt_instructions,
+        pct_questions=pct_questions,
+        batch_prompts=batch_prompts,
+        batch_records=batch_records,
+        prompt_index=prompt_index
+        )
+    # with open(output_path, "w", encoding="utf-8") as output_file:
+    #     with ThreadPoolExecutor(max_workers=args.batch_size) as executor:
+    #         with tqdm.tqdm(total=total_answers, desc=f"Generating ({args.model_id})", unit="answer") as progress:
+    #             for prompt_fields in prompt_instructions:
+    #                 for question in pct_questions:
+    #                     prompt, options = fill_prompt(
+    #                         question=question,
+    #                         model=args.model_id,
+    #                         **prompt_fields,
+    #                     )
+    #                     batch_prompts.append(prompt)
+    #                     batch_records.append(
+    #                         {
+    #                             "prompt_index": prompt_index,
+    #                             "model": args.model_id,
+    #                             "question": question,
+    #                             "options": options,
+    #                             **prompt_fields,
+    #                         }
+    #                     )
+    #                     prompt_index += 1
 
-                if batch_prompts:
-                    progress.update(
-                        save_batch(
-                            args.model_id,
-                            args.max_tokens,
-                            executor,
-                            batch_prompts,
-                            batch_records,
-                            output_file,
-                        )
-                    )
+    #                     if len(batch_prompts) == args.batch_size:
+    #                         progress.update(
+    #                             save_batch(
+    #                                 args.model_id,
+    #                                 args.max_tokens,
+    #                                 executor,
+    #                                 batch_prompts,
+    #                                 batch_records,
+    #                                 output_file,
+    #                             )
+    #                         )
+    #                         batch_prompts.clear()
+    #                         batch_records.clear()
+
+    #             if batch_prompts:
+    #                 progress.update(
+    #                     save_batch(
+    #                         args.model_id,
+    #                         args.max_tokens,
+    #                         executor,
+    #                         batch_prompts,
+    #                         batch_records,
+    #                         output_file,
+    #                     )
+    #                 )
 
 
 if __name__ == "__main__":

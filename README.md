@@ -21,7 +21,8 @@ uv run python3 src/generate_pct_answers.py \
   --instructions_file data/prompting/instructions.json \
   --pct_questions_file data/pct/political_compass_questions.txt \
   --output_dir data/output \
-  --model_id llama3:8b
+  --base_case \
+  --model_id llama3.2:1b
 ```
 
 Generated responses are written to `../data/output/responses.jsonl`, one JSON

@@ -1,0 +1,68 @@
+#!/bin/bash
+#SBATCH --job-name=create_and_test
+#SBATCH --output=create_and_test.out
+#SBATCH --error=create_and_test.err
+#SBATCH --cpus-per-task=10
+#SBATCH --nodes=1
+#SBATCH --nodelist=dgx1
+#SBATCH --time=72:00:00
+#SBATCH --partition=dgx1
+
+set -e
+set -x 
+
+echo "START: $(date)"
+cd /scratch
+mkdir -p clly_MY_OWN_MINICONDA_MARCH26
+mkdir -p clly_CACHE_MY_OWN_MINICONDA_MARCH26
+mkdir -p clly_tmp
+export CONDA_PKGS_DIRS=/scratch/clly_CACHE_MY_OWN_MINICONDA_MARCH26
+export TMPDIR=/scratch/clly_tmp
+export TMP_DIR=/scratch/clly_tmp
+export TMP=/scratch/clly_tmp
+export TEMP=/scratch/clly_tmp
+export PIP_CACHE_DIR=/scratch/clly_CACHE_MY_OWN_MINICONDA_MARCH26
+
+# on asus1 you have /temp instead of /scratch: please, rename everywhere if you submit!!!
+
+cd clly_MY_OWN_MINICONDA_MARCH26
+
+source /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/etc/profile.d/conda.sh
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+conda create -y -p /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip python=3.12
+conda activate /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
+
+echo "pip installing"
+pip install tqdm ollama
+
+echo "testing the environment"
+# sanity check
+python3 - << 'EOF'
+import tqdm
+import ollama
+print("tqdm version:", tqdm.__version__)
+EOF
+
+# working on project
+cd /scratch
+mkdir -p myproject
+cd myproject
+cp -r /home/clly/Political-Bias-Research-Project/* .
+python3 src/generate_pct_answers.py \
+  --personas_file data/prompting/personas.json \
+  --instructions_file data/prompting/instructions.json \
+  --pct_questions_file data/pct/political_compass_questions.txt \
+  --output_dir data/output \
+  --base_case \
+  --model_id llama3:8b
+cp -r ./data/output/llama3:8b/responses_base.jsonl /home/clly/Political-Bias-Research-Project/data/output/llama3:8b
+cd /scratch
+echo "FINISH: $(date)"
+echo "DONE"
+
+# cleaning after yourselves
+rm -rf myproject
+rm -rf clly_tmp
+rm -rf clly_MY_OWN_MINICONDA_MARCH26
+rm -rf clly_CACHE_MY_OWN_MINICONDA_MARCH26
