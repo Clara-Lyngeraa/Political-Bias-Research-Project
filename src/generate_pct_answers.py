@@ -11,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from util.prompt_utils import PRIMER_STRING, fill_prompt, generate_prompts, get_instruction_template
 
-MODEL_ID = "llama3.2:1b"
+MODEL_ID = "llama3:8b"
 
 def model_slug(model_id: str) -> str:
     return model_id.replace("/", "__")

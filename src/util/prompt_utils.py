@@ -42,7 +42,7 @@ CHATML_TEMPLATE = """<|im_start|>system
 """
 
 INSTRUCTION_TEMPLATES = {
-    "llama3.1:8b": LEGACY_LLAMA3_TEMPLATE,
+    "llama3:8b": LLAMA3_TEMPLATE,
     "llama3.2:1b": LEGACY_LLAMA3_TEMPLATE,
     "llama3.3:70b": LLAMA3_TEMPLATE,
     "olmo-3:7b-instruct": CHATML_TEMPLATE,
