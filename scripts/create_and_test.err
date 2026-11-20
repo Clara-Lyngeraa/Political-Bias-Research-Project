@@ -1,0 +1,156 @@
+++ date
++ echo 'START: Fri Nov 20 09:09:31 UTC 2026'
++ cd /scratch
++ mkdir -p clly_MY_OWN_MINICONDA_MARCH26
++ mkdir -p clly_CACHE_MY_OWN_MINICONDA_MARCH26
++ mkdir -p clly_tmp
++ export CONDA_PKGS_DIRS=/scratch/clly_CACHE_MY_OWN_MINICONDA_MARCH26
++ CONDA_PKGS_DIRS=/scratch/clly_CACHE_MY_OWN_MINICONDA_MARCH26
++ export TMPDIR=/scratch/clly_tmp
++ TMPDIR=/scratch/clly_tmp
++ export TMP_DIR=/scratch/clly_tmp
++ TMP_DIR=/scratch/clly_tmp
++ export TMP=/scratch/clly_tmp
++ TMP=/scratch/clly_tmp
++ export TEMP=/scratch/clly_tmp
++ TEMP=/scratch/clly_tmp
++ export PIP_CACHE_DIR=/scratch/clly_CACHE_MY_OWN_MINICONDA_MARCH26
++ PIP_CACHE_DIR=/scratch/clly_CACHE_MY_OWN_MINICONDA_MARCH26
++ cd clly_MY_OWN_MINICONDA_MARCH26
++ source /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/etc/profile.d/conda.sh
+++ export CONDA_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
+++ CONDA_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
+++ export _CONDA_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
+++ _CONDA_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/python
+++ CONDA_PYTHON_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/python
+++ export _CONDA_ROOT=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64
+++ _CONDA_ROOT=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64
+++ '[' -z '' ']'
+++ export CONDA_SHLVL=0
+++ CONDA_SHLVL=0
+++ '[' -n '' ']'
+++++ dirname /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
++++ dirname /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin
+++ PATH=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/condabin:/home/clly/.local/bin:/home/clly/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/clly/.local/bin:/home/clly/bin
+++ export PATH
+++ '[' -z '' ']'
+++ PS1=
++ conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
++ local cmd=tos
++ case "$cmd" in
++ __conda_exe tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
++ '[' -n '' ']'
++ /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
++ conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
++ local cmd=tos
++ case "$cmd" in
++ __conda_exe tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
++ '[' -n '' ']'
++ /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
++ conda create -y -p /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip python=3.12
++ local cmd=create
++ case "$cmd" in
++ __conda_exe create -y -p /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip python=3.12
++ '[' -n '' ']'
++ /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda create -y -p /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip python=3.12
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 26.7.1
+    latest version: 26.10.0
+
+Please update conda by running
+
+    $ conda self update
+
+
+WARNING conda.conda_pypi.main:notify_externally_managed_future(156): 
+  Did you know? You can install many PyPI packages with conda
+  using the conda-pypi beta. Get started:
+    https://docs.conda.io/projects/conda/en/stable/new-features.html
+
++ conda activate /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
++ '[' -n '' ']'
++ local ask_conda
+++ PS1=
+++ __conda_exe shell.posix activate /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
+++ '[' -n '' ']'
+++ /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda shell.posix activate /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
++ ask_conda='export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+PS1='\''(newpy_pip) '\''
+export PATH='\''/scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip/bin:/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/condabin:/home/clly/.local/bin:/home/clly/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/clly/.local/bin:/home/clly/bin'\''
+export CONDA_PREFIX='\''/scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''newpy_pip'\''
+export CONDA_PROMPT_MODIFIER='\''(newpy_pip) '\''
+export CONDA_EXE='\''/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda'\''
+export _CONDA_EXE='\''/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda'\''
+export CONDA_PYTHON_EXE='\''/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/python'\''
+export _CONDA_ROOT='\''/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64'\'''
++ eval 'export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+PS1='\''(newpy_pip) '\''
+export PATH='\''/scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip/bin:/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/condabin:/home/clly/.local/bin:/home/clly/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/clly/.local/bin:/home/clly/bin'\''
+export CONDA_PREFIX='\''/scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''newpy_pip'\''
+export CONDA_PROMPT_MODIFIER='\''(newpy_pip) '\''
+export CONDA_EXE='\''/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda'\''
+export _CONDA_EXE='\''/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda'\''
+export CONDA_PYTHON_EXE='\''/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/python'\''
+export _CONDA_ROOT='\''/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64'\'''
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ PS1='(newpy_pip) '
+++ export PATH=/scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip/bin:/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/condabin:/home/clly/.local/bin:/home/clly/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/clly/.local/bin:/home/clly/bin
+++ PATH=/scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip/bin:/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/condabin:/home/clly/.local/bin:/home/clly/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/clly/.local/bin:/home/clly/bin
+++ export CONDA_PREFIX=/scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
+++ CONDA_PREFIX=/scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
+++ export CONDA_SHLVL=1
+++ CONDA_SHLVL=1
+++ export CONDA_DEFAULT_ENV=newpy_pip
+++ CONDA_DEFAULT_ENV=newpy_pip
+++ export 'CONDA_PROMPT_MODIFIER=(newpy_pip) '
+++ CONDA_PROMPT_MODIFIER='(newpy_pip) '
+++ export CONDA_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
+++ CONDA_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
+++ export _CONDA_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
+++ _CONDA_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/conda
+++ export CONDA_PYTHON_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/python
+++ CONDA_PYTHON_EXE=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/bin/python
+++ export _CONDA_ROOT=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64
+++ _CONDA_ROOT=/usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ echo 'pip installing'
++ pip install tqdm ollama
++ echo 'testing the environment'
++ python3 -
++ cd /scratch
++ mkdir -p myproject
++ cd myproject
++ cp -r /home/clly/Political-Bias-Research-Project/LICENSE /home/clly/Political-Bias-Research-Project/README.md /home/clly/Political-Bias-Research-Project/data /home/clly/Political-Bias-Research-Project/pyproject.toml /home/clly/Political-Bias-Research-Project/scripts /home/clly/Political-Bias-Research-Project/src /home/clly/Political-Bias-Research-Project/test_llama_cpp.py /home/clly/Political-Bias-Research-Project/tests /home/clly/Political-Bias-Research-Project/uv.lock /home/clly/Political-Bias-Research-Project/visualizations .
++ python3 src/generate_pct_answers.py --personas_file data/prompting/personas.json --instructions_file data/prompting/instructions.json --pct_questions_file data/pct/political_compass_questions.txt --output_dir data/output --base_case --model_id olmo-3:7b-instruct
+Generating (olmo-3:7b-instruct):   0%|          | 0/1240 [00:00<?, ?answer/s]Generating (olmo-3:7b-instruct):   1%|          | 8/1240 [00:34<1:27:32,  4.26s/answer]Generating (olmo-3:7b-instruct):   1%|▏         | 16/1240 [01:01<1:17:20,  3.79s/answer]Generating (olmo-3:7b-instruct):   2%|▏         | 24/1240 [01:26<1:10:26,  3.48s/answer]Generating (olmo-3:7b-instruct):   3%|▎         | 32/1240 [01:51<1:06:50,  3.32s/answer]Generating (olmo-3:7b-instruct):   3%|▎         | 40/1240 [02:16<1:04:53,  3.24s/answer]Generating (olmo-3:7b-instruct):   4%|▍         | 48/1240 [02:41<1:04:01,  3.22s/answer]Generating (olmo-3:7b-instruct):   5%|▍         | 56/1240 [03:04<1:01:31,  3.12s/answer]Generating (olmo-3:7b-instruct):   5%|▌         | 64/1240 [03:28<1:00:06,  3.07s/answer]Generating (olmo-3:7b-instruct):   6%|▌         | 72/1240 [03:54<1:01:05,  3.14s/answer]Generating (olmo-3:7b-instruct):   6%|▋         | 80/1240 [04:20<1:01:03,  3.16s/answer]Generating (olmo-3:7b-instruct):   7%|▋         | 88/1240 [04:43<58:56,  3.07s/answer]  Generating (olmo-3:7b-instruct):   8%|▊         | 96/1240 [05:05<56:57,  2.99s/answer]Generating (olmo-3:7b-instruct):   8%|▊         | 104/1240 [05:29<56:41,  2.99s/answer]Generating (olmo-3:7b-instruct):   9%|▉         | 112/1240 [05:54<56:42,  3.02s/answer]Generating (olmo-3:7b-instruct):  10%|▉         | 120/1240 [06:18<56:05,  3.01s/answer]Generating (olmo-3:7b-instruct):  10%|█         | 128/1240 [06:40<54:33,  2.94s/answer]Generating (olmo-3:7b-instruct):  11%|█         | 136/1240 [07:03<53:37,  2.91s/answer]Generating (olmo-3:7b-instruct):  12%|█▏        | 144/1240 [07:28<54:31,  2.99s/answer]Generating (olmo-3:7b-instruct):  12%|█▏        | 152/1240 [07:52<53:56,  2.97s/answer]Generating (olmo-3:7b-instruct):  13%|█▎        | 160/1240 [08:17<54:22,  3.02s/answer]Generating (olmo-3:7b-instruct):  14%|█▎        | 168/1240 [08:43<55:03,  3.08s/answer]Generating (olmo-3:7b-instruct):  14%|█▍        | 176/1240 [09:07<54:16,  3.06s/answer]Generating (olmo-3:7b-instruct):  15%|█▍        | 184/1240 [09:30<53:11,  3.02s/answer]Generating (olmo-3:7b-instruct):  15%|█▌        | 192/1240 [09:53<52:15,  2.99s/answer]Generating (olmo-3:7b-instruct):  16%|█▌        | 200/1240 [10:17<51:38,  2.98s/answer]Generating (olmo-3:7b-instruct):  17%|█▋        | 208/1240 [10:42<51:40,  3.00s/answer]Generating (olmo-3:7b-instruct):  17%|█▋        | 216/1240 [11:02<48:45,  2.86s/answer]Generating (olmo-3:7b-instruct):  18%|█▊        | 224/1240 [11:25<48:40,  2.87s/answer]Generating (olmo-3:7b-instruct):  19%|█▊        | 232/1240 [11:49<48:46,  2.90s/answer]Generating (olmo-3:7b-instruct):  19%|█▉        | 240/1240 [12:12<48:30,  2.91s/answer]Generating (olmo-3:7b-instruct):  20%|██        | 248/1240 [12:34<47:32,  2.88s/answer]Generating (olmo-3:7b-instruct):  21%|██        | 256/1240 [12:57<46:59,  2.87s/answer]Generating (olmo-3:7b-instruct):  21%|██▏       | 264/1240 [13:19<46:07,  2.84s/answer]Generating (olmo-3:7b-instruct):  22%|██▏       | 272/1240 [13:43<46:32,  2.88s/answer]Generating (olmo-3:7b-instruct):  23%|██▎       | 280/1240 [14:06<46:02,  2.88s/answer]Generating (olmo-3:7b-instruct):  23%|██▎       | 288/1240 [14:27<44:05,  2.78s/answer]Generating (olmo-3:7b-instruct):  24%|██▍       | 296/1240 [14:50<44:33,  2.83s/answer]Generating (olmo-3:7b-instruct):  25%|██▍       | 304/1240 [15:12<43:37,  2.80s/answer]Generating (olmo-3:7b-instruct):  25%|██▌       | 312/1240 [15:37<44:58,  2.91s/answer]Generating (olmo-3:7b-instruct):  26%|██▌       | 320/1240 [16:09<49:11,  3.21s/answer]Generating (olmo-3:7b-instruct):  26%|██▋       | 328/1240 [16:44<54:23,  3.58s/answer]Generating (olmo-3:7b-instruct):  27%|██▋       | 336/1240 [17:20<57:52,  3.84s/answer]Generating (olmo-3:7b-instruct):  28%|██▊       | 344/1240 [17:53<58:43,  3.93s/answer]Generating (olmo-3:7b-instruct):  28%|██▊       | 352/1240 [18:25<58:32,  3.96s/answer]Generating (olmo-3:7b-instruct):  29%|██▉       | 360/1240 [18:57<57:57,  3.95s/answer]Generating (olmo-3:7b-instruct):  30%|██▉       | 368/1240 [19:29<58:05,  4.00s/answer]Generating (olmo-3:7b-instruct):  30%|███       | 376/1240 [20:00<56:58,  3.96s/answer]Generating (olmo-3:7b-instruct):  31%|███       | 384/1240 [20:32<56:40,  3.97s/answer]Generating (olmo-3:7b-instruct):  32%|███▏      | 392/1240 [21:07<57:47,  4.09s/answer]Generating (olmo-3:7b-instruct):  32%|███▏      | 400/1240 [21:38<56:01,  4.00s/answer]Generating (olmo-3:7b-instruct):  33%|███▎      | 408/1240 [22:14<57:40,  4.16s/answer]Generating (olmo-3:7b-instruct):  34%|███▎      | 416/1240 [22:49<58:08,  4.23s/answer]Generating (olmo-3:7b-instruct):  34%|███▍      | 424/1240 [23:21<56:19,  4.14s/answer]Generating (olmo-3:7b-instruct):  35%|███▍      | 432/1240 [23:51<54:28,  4.04s/answer]Generating (olmo-3:7b-instruct):  35%|███▌      | 440/1240 [24:20<52:15,  3.92s/answer]Generating (olmo-3:7b-instruct):  36%|███▌      | 448/1240 [24:51<51:33,  3.91s/answer]Generating (olmo-3:7b-instruct):  37%|███▋      | 456/1240 [25:23<51:12,  3.92s/answer]Generating (olmo-3:7b-instruct):  37%|███▋      | 464/1240 [25:52<49:36,  3.84s/answer]Generating (olmo-3:7b-instruct):  38%|███▊      | 472/1240 [26:24<49:41,  3.88s/answer]Generating (olmo-3:7b-instruct):  39%|███▊      | 480/1240 [26:53<48:29,  3.83s/answer]Generating (olmo-3:7b-instruct):  39%|███▉      | 488/1240 [27:25<48:16,  3.85s/answer]Generating (olmo-3:7b-instruct):  40%|████      | 496/1240 [27:55<47:29,  3.83s/answer]Generating (olmo-3:7b-instruct):  41%|████      | 504/1240 [28:25<46:39,  3.80s/answer]Generating (olmo-3:7b-instruct):  41%|████▏     | 512/1240 [28:57<46:50,  3.86s/answer]Generating (olmo-3:7b-instruct):  42%|████▏     | 520/1240 [29:26<45:48,  3.82s/answer]Generating (olmo-3:7b-instruct):  43%|████▎     | 528/1240 [29:56<44:56,  3.79s/answer]Generating (olmo-3:7b-instruct):  43%|████▎     | 536/1240 [30:27<44:40,  3.81s/answer]Generating (olmo-3:7b-instruct):  44%|████▍     | 544/1240 [30:59<44:49,  3.86s/answer]Generating (olmo-3:7b-instruct):  45%|████▍     | 552/1240 [31:28<43:20,  3.78s/answer]Generating (olmo-3:7b-instruct):  45%|████▌     | 560/1240 [31:58<42:44,  3.77s/answer]Generating (olmo-3:7b-instruct):  46%|████▌     | 568/1240 [32:29<42:36,  3.80s/answer]Generating (olmo-3:7b-instruct):  46%|████▋     | 576/1240 [33:05<44:42,  4.04s/answer]Generating (olmo-3:7b-instruct):  47%|████▋     | 584/1240 [33:40<44:58,  4.11s/answer]Generating (olmo-3:7b-instruct):  48%|████▊     | 592/1240 [34:11<43:53,  4.06s/answer]Generating (olmo-3:7b-instruct):  48%|████▊     | 600/1240 [34:41<42:16,  3.96s/answer]Generating (olmo-3:7b-instruct):  49%|████▉     | 608/1240 [35:12<41:33,  3.95s/answer]Generating (olmo-3:7b-instruct):  50%|████▉     | 616/1240 [35:42<40:23,  3.88s/answer]Generating (olmo-3:7b-instruct):  50%|█████     | 624/1240 [36:06<37:12,  3.62s/answer]Generating (olmo-3:7b-instruct):  51%|█████     | 632/1240 [36:29<34:20,  3.39s/answer]Generating (olmo-3:7b-instruct):  52%|█████▏    | 640/1240 [36:48<30:53,  3.09s/answer]Generating (olmo-3:7b-instruct):  52%|█████▏    | 648/1240 [37:10<29:28,  2.99s/answer]Generating (olmo-3:7b-instruct):  53%|█████▎    | 656/1240 [37:31<27:51,  2.86s/answer]Generating (olmo-3:7b-instruct):  54%|█████▎    | 664/1240 [37:52<26:53,  2.80s/answer]Generating (olmo-3:7b-instruct):  54%|█████▍    | 672/1240 [38:11<25:10,  2.66s/answer]Generating (olmo-3:7b-instruct):  55%|█████▍    | 680/1240 [38:30<23:57,  2.57s/answer]Generating (olmo-3:7b-instruct):  55%|█████▌    | 688/1240 [38:48<22:54,  2.49s/answer]Generating (olmo-3:7b-instruct):  56%|█████▌    | 696/1240 [39:12<23:48,  2.63s/answer]Generating (olmo-3:7b-instruct):  57%|█████▋    | 704/1240 [39:34<23:55,  2.68s/answer]Generating (olmo-3:7b-instruct):  57%|█████▋    | 712/1240 [39:53<22:54,  2.60s/answer]Generating (olmo-3:7b-instruct):  58%|█████▊    | 720/1240 [40:15<22:46,  2.63s/answer]Generating (olmo-3:7b-instruct):  59%|█████▊    | 728/1240 [40:37<22:55,  2.69s/answer]Generating (olmo-3:7b-instruct):  59%|█████▉    | 736/1240 [41:00<22:58,  2.74s/answer]Generating (olmo-3:7b-instruct):  60%|██████    | 744/1240 [41:18<21:14,  2.57s/answer]Generating (olmo-3:7b-instruct):  61%|██████    | 752/1240 [41:35<20:00,  2.46s/answer]Generating (olmo-3:7b-instruct):  61%|██████▏   | 760/1240 [41:54<19:20,  2.42s/answer]Generating (olmo-3:7b-instruct):  62%|██████▏   | 768/1240 [42:11<18:25,  2.34s/answer]Generating (olmo-3:7b-instruct):  63%|██████▎   | 776/1240 [42:29<17:58,  2.32s/answer]Generating (olmo-3:7b-instruct):  63%|██████▎   | 784/1240 [42:51<18:38,  2.45s/answer]Generating (olmo-3:7b-instruct):  64%|██████▍   | 792/1240 [43:10<18:02,  2.42s/answer]Generating (olmo-3:7b-instruct):  65%|██████▍   | 800/1240 [43:30<17:43,  2.42s/answer]Generating (olmo-3:7b-instruct):  65%|██████▌   | 808/1240 [43:51<17:55,  2.49s/answer]Generating (olmo-3:7b-instruct):  66%|██████▌   | 816/1240 [44:18<19:34,  2.77s/answer]Generating (olmo-3:7b-instruct):  66%|██████▋   | 824/1240 [44:45<20:20,  2.93s/answer]Generating (olmo-3:7b-instruct):  67%|██████▋   | 832/1240 [45:13<21:14,  3.12s/answer]Generating (olmo-3:7b-instruct):  68%|██████▊   | 840/1240 [45:43<22:00,  3.30s/answer]Generating (olmo-3:7b-instruct):  68%|██████▊   | 848/1240 [46:14<22:42,  3.48s/answer]Generating (olmo-3:7b-instruct):  69%|██████▉   | 856/1240 [46:41<22:03,  3.45s/answer]Generating (olmo-3:7b-instruct):  70%|██████▉   | 864/1240 [47:08<21:30,  3.43s/answer]Generating (olmo-3:7b-instruct):  70%|███████   | 872/1240 [47:29<19:32,  3.19s/answer]Generating (olmo-3:7b-instruct):  71%|███████   | 880/1240 [47:50<17:58,  3.00s/answer]Generating (olmo-3:7b-instruct):  72%|███████▏  | 888/1240 [48:08<16:23,  2.79s/answer]Generating (olmo-3:7b-instruct):  72%|███████▏  | 896/1240 [48:24<14:42,  2.57s/answer]Generating (olmo-3:7b-instruct):  73%|███████▎  | 904/1240 [48:42<13:44,  2.45s/answer]Generating (olmo-3:7b-instruct):  74%|███████▎  | 912/1240 [49:02<13:31,  2.47s/answer]Generating (olmo-3:7b-instruct):  74%|███████▍  | 920/1240 [49:21<12:58,  2.43s/answer]Generating (olmo-3:7b-instruct):  75%|███████▍  | 928/1240 [49:38<12:11,  2.35s/answer]Generating (olmo-3:7b-instruct):  75%|███████▌  | 936/1240 [49:56<11:47,  2.33s/answer]Generating (olmo-3:7b-instruct):  76%|███████▌  | 944/1240 [50:18<12:08,  2.46s/answer]Generating (olmo-3:7b-instruct):  77%|███████▋  | 952/1240 [50:41<12:18,  2.56s/answer]Generating (olmo-3:7b-instruct):  77%|███████▋  | 960/1240 [51:00<11:42,  2.51s/answer]Generating (olmo-3:7b-instruct):  78%|███████▊  | 968/1240 [51:21<11:30,  2.54s/answer]Generating (olmo-3:7b-instruct):  79%|███████▊  | 976/1240 [51:41<11:11,  2.54s/answer]Generating (olmo-3:7b-instruct):  79%|███████▉  | 984/1240 [52:01<10:48,  2.53s/answer]Generating (olmo-3:7b-instruct):  80%|████████  | 992/1240 [52:19<10:03,  2.43s/answer]Generating (olmo-3:7b-instruct):  81%|████████  | 1000/1240 [52:41<10:09,  2.54s/answer]Generating (olmo-3:7b-instruct):  81%|████████▏ | 1008/1240 [53:06<10:28,  2.71s/answer]Generating (olmo-3:7b-instruct):  82%|████████▏ | 1016/1240 [53:27<09:59,  2.67s/answer]Generating (olmo-3:7b-instruct):  83%|████████▎ | 1024/1240 [53:48<09:39,  2.68s/answer]Generating (olmo-3:7b-instruct):  83%|████████▎ | 1032/1240 [54:11<09:30,  2.74s/answer]Generating (olmo-3:7b-instruct):  84%|████████▍ | 1040/1240 [54:34<09:13,  2.77s/answer]Generating (olmo-3:7b-instruct):  85%|████████▍ | 1048/1240 [54:58<09:03,  2.83s/answer]Generating (olmo-3:7b-instruct):  85%|████████▌ | 1056/1240 [55:19<08:33,  2.79s/answer]Generating (olmo-3:7b-instruct):  86%|████████▌ | 1064/1240 [55:43<08:18,  2.83s/answer]Generating (olmo-3:7b-instruct):  86%|████████▋ | 1072/1240 [56:10<08:25,  3.01s/answer]Generating (olmo-3:7b-instruct):  87%|████████▋ | 1080/1240 [56:35<08:03,  3.02s/answer]Generating (olmo-3:7b-instruct):  88%|████████▊ | 1088/1240 [56:57<07:30,  2.96s/answer]Generating (olmo-3:7b-instruct):  88%|████████▊ | 1096/1240 [57:25<07:31,  3.13s/answer]Generating (olmo-3:7b-instruct):  89%|████████▉ | 1104/1240 [57:52<07:11,  3.18s/answer]Generating (olmo-3:7b-instruct):  90%|████████▉ | 1112/1240 [58:15<06:36,  3.10s/answer]Generating (olmo-3:7b-instruct):  90%|█████████ | 1120/1240 [58:41<06:15,  3.13s/answer]Generating (olmo-3:7b-instruct):  91%|█████████ | 1128/1240 [59:23<07:03,  3.78s/answer]Generating (olmo-3:7b-instruct):  92%|█████████▏| 1136/1240 [1:00:08<07:30,  4.33s/answer]Generating (olmo-3:7b-instruct):  92%|█████████▏| 1144/1240 [1:00:51<07:27,  4.66s/answer]Generating (olmo-3:7b-instruct):  93%|█████████▎| 1152/1240 [1:01:29<06:50,  4.67s/answer]Generating (olmo-3:7b-instruct):  94%|█████████▎| 1160/1240 [1:02:08<06:18,  4.73s/answer]Generating (olmo-3:7b-instruct):  94%|█████████▍| 1168/1240 [1:02:44<05:37,  4.69s/answer]Generating (olmo-3:7b-instruct):  95%|█████████▍| 1176/1240 [1:03:25<05:07,  4.80s/answer]Generating (olmo-3:7b-instruct):  95%|█████████▌| 1184/1240 [1:03:51<04:02,  4.33s/answer]Generating (olmo-3:7b-instruct):  96%|█████████▌| 1192/1240 [1:04:21<03:19,  4.16s/answer]Generating (olmo-3:7b-instruct):  97%|█████████▋| 1200/1240 [1:04:47<02:36,  3.90s/answer]Generating (olmo-3:7b-instruct):  97%|█████████▋| 1208/1240 [1:05:14<01:59,  3.74s/answer]Generating (olmo-3:7b-instruct):  98%|█████████▊| 1216/1240 [1:05:46<01:31,  3.81s/answer]Generating (olmo-3:7b-instruct):  99%|█████████▊| 1224/1240 [1:06:13<00:58,  3.66s/answer]Generating (olmo-3:7b-instruct):  99%|█████████▉| 1232/1240 [1:06:40<00:28,  3.60s/answer]Generating (olmo-3:7b-instruct): 100%|██████████| 1240/1240 [1:07:05<00:00,  3.44s/answer]Generating (olmo-3:7b-instruct): 100%|██████████| 1240/1240 [1:07:05<00:00,  3.25s/answer]
++ cp -r ./data/output/olmo-3:7b-instruct/responses_base.jsonl /home/clly/Political-Bias-Research-Project/data/output/olmo-3:7b-instruct
++ cd /scratch
+++ date
++ echo 'FINISH: Fri Nov 20 10:17:17 UTC 2026'
++ echo DONE
++ rm -rf myproject
++ rm -rf clly_tmp
++ rm -rf clly_MY_OWN_MINICONDA_MARCH26
++ rm -rf clly_CACHE_MY_OWN_MINICONDA_MARCH26

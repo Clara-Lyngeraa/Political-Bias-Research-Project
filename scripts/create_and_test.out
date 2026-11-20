@@ -1,0 +1,154 @@
+START: Fri Nov 20 09:09:31 UTC 2026
+accepted Terms of Service for https://repo.anaconda.com/pkgs/main
+accepted Terms of Service for https://repo.anaconda.com/pkgs/r
+2 channel Terms of Service accepted
+Retrieving notices: ...working... done
+Channels:
+ - defaults
+Platform: linux-aarch64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
+
+  added / updated specs:
+    - python=3.12
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    _libgcc_mutex-0.1          |             main           2 KB
+    _openmp_mutex-5.1          |           52_gnu           6 KB
+    bzip2-1.0.8                |       h998d150_6         210 KB
+    ca-certificates-2026.11.5  |       h59cdc77_0         113 KB
+    ld_impl_linux-aarch64-2.44 |       h97084ae_3         765 KB
+    libexpat-2.10.0            |       h5b11e9f_0         128 KB
+    libffi-3.4.8               |       ha74a3d0_3         132 KB
+    libgcc-15.2.0              |       hc18542e_8         499 KB
+    libgcc-ng-15.2.0           |       h51576c1_8          28 KB
+    libstdcxx-15.2.0           |       h9538471_8         3.7 MB
+    libuuid-1.41.5             |       h998d150_0          29 KB
+    libxcb-1.17.0              |       hf66535e_0         433 KB
+    libzlib-1.3.2              |       h27118de_0          60 KB
+    ncurses-6.6                |       h47fb78d_0         939 KB
+    openssl-3.5.9              |       h39c9139_0         5.7 MB
+    packaging-26.3             |  py312hd43f75c_0         373 KB
+    pip-26.2.2                 |     pyhc872135_0         1.1 MB
+    pthread-stubs-0.3          |       h27118de_2           7 KB
+    python-3.12.16             |       hb391712_0        13.1 MB
+    readline-8.3               |       h886d1d0_0         498 KB
+    setuptools-84.2.1          |  py312hd43f75c_0         1.3 MB
+    sqlite-3.54.1              |       h2b0225e_0         1.3 MB
+    tk-8.6.15                  |       h987d8db_0         3.5 MB
+    tzdata-2026c               |       he532380_0         117 KB
+    wheel-0.48.0               |  py312hd43f75c_0          75 KB
+    xorg-libx11-1.8.14         |       hf8334eb_0         825 KB
+    xorg-libxau-1.0.12         |       hf66535e_0          14 KB
+    xorg-libxdmcp-1.1.5        |       hf66535e_0          19 KB
+    xorg-xorgproto-2025.1      |       h27118de_0         553 KB
+    xz-5.8.4                   |       h022054e_0         660 KB
+    zlib-1.3.2                 |       h27118de_0          89 KB
+    ------------------------------------------------------------
+                                           Total:        36.2 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-aarch64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      pkgs/main/linux-aarch64::_openmp_mutex-5.1-52_gnu 
+  bzip2              pkgs/main/linux-aarch64::bzip2-1.0.8-h998d150_6 
+  ca-certificates    pkgs/main/noarch::ca-certificates-2026.11.5-h59cdc77_0 
+  ld_impl_linux-aar~ pkgs/main/linux-aarch64::ld_impl_linux-aarch64-2.44-h97084ae_3 
+  libexpat           pkgs/main/linux-aarch64::libexpat-2.10.0-h5b11e9f_0 
+  libffi             pkgs/main/linux-aarch64::libffi-3.4.8-ha74a3d0_3 
+  libgcc             pkgs/main/linux-aarch64::libgcc-15.2.0-hc18542e_8 
+  libgcc-ng          pkgs/main/linux-aarch64::libgcc-ng-15.2.0-h51576c1_8 
+  libstdcxx          pkgs/main/linux-aarch64::libstdcxx-15.2.0-h9538471_8 
+  libuuid            pkgs/main/linux-aarch64::libuuid-1.41.5-h998d150_0 
+  libxcb             pkgs/main/linux-aarch64::libxcb-1.17.0-hf66535e_0 
+  libzlib            pkgs/main/linux-aarch64::libzlib-1.3.2-h27118de_0 
+  ncurses            pkgs/main/linux-aarch64::ncurses-6.6-h47fb78d_0 
+  openssl            pkgs/main/linux-aarch64::openssl-3.5.9-h39c9139_0 
+  packaging          pkgs/main/linux-aarch64::packaging-26.3-py312hd43f75c_0 
+  pip                pkgs/main/noarch::pip-26.2.2-pyhc872135_0 
+  pthread-stubs      pkgs/main/linux-aarch64::pthread-stubs-0.3-h27118de_2 
+  python             pkgs/main/linux-aarch64::python-3.12.16-hb391712_0 
+  readline           pkgs/main/linux-aarch64::readline-8.3-h886d1d0_0 
+  setuptools         pkgs/main/linux-aarch64::setuptools-84.2.1-py312hd43f75c_0 
+  sqlite             pkgs/main/linux-aarch64::sqlite-3.54.1-h2b0225e_0 
+  tk                 pkgs/main/linux-aarch64::tk-8.6.15-h987d8db_0 
+  tzdata             pkgs/main/noarch::tzdata-2026c-he532380_0 
+  wheel              pkgs/main/linux-aarch64::wheel-0.48.0-py312hd43f75c_0 
+  xorg-libx11        pkgs/main/linux-aarch64::xorg-libx11-1.8.14-hf8334eb_0 
+  xorg-libxau        pkgs/main/linux-aarch64::xorg-libxau-1.0.12-hf66535e_0 
+  xorg-libxdmcp      pkgs/main/linux-aarch64::xorg-libxdmcp-1.1.5-hf66535e_0 
+  xorg-xorgproto     pkgs/main/linux-aarch64::xorg-xorgproto-2025.1-h27118de_0 
+  xz                 pkgs/main/linux-aarch64::xz-5.8.4-h022054e_0 
+  zlib               pkgs/main/linux-aarch64::zlib-1.3.2-h27118de_0 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+pip installing
+Collecting tqdm
+  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+Collecting ollama
+  Downloading ollama-0.6.3-py3-none-any.whl.metadata (7.6 kB)
+Collecting httpx>=0.27 (from ollama)
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting pydantic>=2.9 (from ollama)
+  Downloading pydantic-2.14.4-py3-none-any.whl.metadata (143 kB)
+Collecting anyio (from httpx>=0.27->ollama)
+  Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx>=0.27->ollama)
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx>=0.27->ollama)
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx>=0.27->ollama)
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx>=0.27->ollama)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9->ollama)
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.5 (from pydantic>=2.9->ollama)
+  Downloading pydantic_core-2.50.5-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (6.6 kB)
+Collecting typing-extensions>=4.16.0 (from pydantic>=2.9->ollama)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic>=2.9->ollama)
+  Downloading typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)
+Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+Downloading ollama-0.6.3-py3-none-any.whl (16 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading pydantic-2.14.4-py3-none-any.whl (494 kB)
+Downloading pydantic_core-2.50.5-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 10.4 MB/s  0:00:00
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Installing collected packages: typing-extensions, tqdm, idna, h11, certifi, annotated-types, typing-inspection, pydantic-core, httpcore, anyio, pydantic, httpx, ollama
+
+Successfully installed annotated-types-0.8.0 anyio-4.16.0 certifi-2026.10.23 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 ollama-0.6.3 pydantic-2.14.4 pydantic-core-2.50.5 tqdm-4.70.1 typing-extensions-4.16.0 typing-inspection-0.4.5
+testing the environment
+tqdm version: 4.70.1
+FINISH: Fri Nov 20 10:17:17 UTC 2026
+DONE

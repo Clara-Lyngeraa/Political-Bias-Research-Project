@@ -25,8 +25,7 @@ export PIP_CACHE_DIR=/scratch/clly_CACHE_MY_OWN_MINICONDA_MARCH26
 
 # on asus1 you have /temp instead of /scratch: please, rename everywhere if you submit!!!
 
-cd clly_MY_O
-WN_MINICONDA_MARCH26
+cd clly_MY_OWN_MINICONDA_MARCH26
 
 source /usr/local/minicondas/Miniconda3-py313_26.7.1-1-Linux-aarch64/etc/profile.d/conda.sh
 conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
