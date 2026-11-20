@@ -157,6 +157,7 @@ def fill_prompt(
         instruction_prompt = instruction_prompt.replace("{options}", option_text)
     else:
         options = OPTION_TEXT
+        # options = []
 
     prompt = get_instruction_template(model)
     prompt = prompt.replace("{system_prompt}", system_prompt)

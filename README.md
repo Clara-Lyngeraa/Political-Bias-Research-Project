@@ -25,6 +25,26 @@ uv run python3 src/generate_pct_answers.py \
   --model_id llama3.2:1b
 ```
 
+```bash
+uv run python3 src/handle_data/open_to_closed.py \
+  --model_id llama3.2:1b \
+  --input_path data/output \
+  --output_path data/output/converted
+```
+
+
+
 Generated responses are written to `../data/output/responses.jsonl`, one JSON
 record per prompt. Generation defaults to batches of 8 prompts and a maximum
 response length of 512 tokens. Adjust these with `--batch_size` and `--max_tokens`.
+
+Export the closed-domain responses from the JSONL files under `data/output`:
+
+```bash
+uv run python src/consolidate_data.py
+```
+
+The CSV is written to `data/output/closed_domain_responses.csv`. Open-domain
+records are excluded; response metadata, the selected option, its ordinal score,
+and the original completion are included. Invalid JSONL lines are reported and
+skipped. Pass `--input PATH` and `--output PATH` to use different locations.
