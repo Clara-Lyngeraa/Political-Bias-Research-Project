@@ -1,8 +1,7 @@
-START: Fri Nov 20 09:09:31 UTC 2026
+START: Fri Nov 20 15:41:57 UTC 2026
 accepted Terms of Service for https://repo.anaconda.com/pkgs/main
 accepted Terms of Service for https://repo.anaconda.com/pkgs/r
 2 channel Terms of Service accepted
-Retrieving notices: ...working... done
 Channels:
  - defaults
 Platform: linux-aarch64
@@ -150,5 +149,5 @@ Installing collected packages: typing-extensions, tqdm, idna, h11, certifi, anno
 Successfully installed annotated-types-0.8.0 anyio-4.16.0 certifi-2026.10.23 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 ollama-0.6.3 pydantic-2.14.4 pydantic-core-2.50.5 tqdm-4.70.1 typing-extensions-4.16.0 typing-inspection-0.4.5
 testing the environment
 tqdm version: 4.70.1
-FINISH: Fri Nov 20 10:17:17 UTC 2026
+FINISH: Sat Nov 21 12:41:41 UTC 2026
 DONE
