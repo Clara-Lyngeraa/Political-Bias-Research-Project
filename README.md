@@ -32,6 +32,12 @@ uv run python3 src/handle_data/open_to_closed.py \
   --output_path data/output/converted
 ```
 
+```bash
+uv run python3 src/consolidate_data.py \
+  --input_path data/output/converted \
+  --output_path data/output/consolidated \
+```
+
 
 
 Generated responses are written to `../data/output/responses.jsonl`, one JSON

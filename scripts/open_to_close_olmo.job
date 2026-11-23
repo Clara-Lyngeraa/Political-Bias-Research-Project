@@ -53,7 +53,7 @@ python3 src/handle_data/open_to_closed.py \
   --model_id olmo-3:7b-instruct \
   --input_path data/output \
   --output_path data/output/converted
-cp -r ./data/output/converted /home/clly/Political-Bias-Research-Project/data/output/converted
+cp -r ./data/output/converted/olmo-3:7b-instruct /home/clly/Political-Bias-Research-Project/data/output/converted/olmo-3:7b-instruct
 cd /scratch
 echo "FINISH: $(date)"
 echo "DONE"

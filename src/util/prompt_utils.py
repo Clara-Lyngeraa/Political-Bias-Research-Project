@@ -198,3 +198,26 @@ def fill_prompt_base_case(
     prompt += PRIMER_STRING[instruction["type"]]
 
     return prompt, options 
+
+import re
+
+def extract_selection_from_answer(content_json: dict):
+    raw = content_json.get("answer", "")
+
+    # 1. Try a normal parse first
+    try:
+        return json.loads(raw, strict=False)["selection"]
+    except (json.JSONDecodeError, KeyError, TypeError):
+        pass
+
+    # 2. Pull selection out directly; works even if "response" is broken
+    m = re.search(r'"selection"\s*:\s*"([^"]*)"', raw)
+    if m:
+        return m.group(1)
+
+    # 3. Fall back to the raw completion, which starts with the option text
+    m = re.match(r'\s*"?([A-Za-z ]+?)"?\s*,\s*"response"', content_json.get("completion", ""))
+    if m:
+        return m.group(1)
+
+    return None
