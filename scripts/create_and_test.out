@@ -1,7 +1,8 @@
-START: Fri Nov 20 15:41:57 UTC 2026
+START: Sun Nov 22 18:11:00 UTC 2026
 accepted Terms of Service for https://repo.anaconda.com/pkgs/main
 accepted Terms of Service for https://repo.anaconda.com/pkgs/r
 2 channel Terms of Service accepted
+Retrieving notices: ...working... done
 Channels:
  - defaults
 Platform: linux-aarch64
@@ -115,7 +116,7 @@ Collecting pydantic>=2.9 (from ollama)
 Collecting anyio (from httpx>=0.27->ollama)
   Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
 Collecting certifi (from httpx>=0.27->ollama)
-  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+  Downloading certifi-2026.11.20-py3-none-any.whl.metadata (2.5 kB)
 Collecting httpcore==1.* (from httpx>=0.27->ollama)
   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
 Collecting idna (from httpx>=0.27->ollama)
@@ -143,11 +144,12 @@ Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
 Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
 Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
 Downloading idna-3.20-py3-none-any.whl (69 kB)
-Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading certifi-2026.11.20-py3-none-any.whl (127 kB)
 Installing collected packages: typing-extensions, tqdm, idna, h11, certifi, annotated-types, typing-inspection, pydantic-core, httpcore, anyio, pydantic, httpx, ollama
 
-Successfully installed annotated-types-0.8.0 anyio-4.16.0 certifi-2026.10.23 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 ollama-0.6.3 pydantic-2.14.4 pydantic-core-2.50.5 tqdm-4.70.1 typing-extensions-4.16.0 typing-inspection-0.4.5
+Successfully installed annotated-types-0.8.0 anyio-4.16.0 certifi-2026.11.20 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 ollama-0.6.3 pydantic-2.14.4 pydantic-core-2.50.5 tqdm-4.70.1 typing-extensions-4.16.0 typing-inspection-0.4.5
 testing the environment
 tqdm version: 4.70.1
-FINISH: Sat Nov 21 12:41:41 UTC 2026
+finished
+FINISH: Mon Nov 23 03:19:50 UTC 2026
 DONE
