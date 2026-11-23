@@ -1,7 +1,8 @@
-START: Fri Nov 20 15:41:57 UTC 2026
+START: Sun Nov 22 20:44:27 CET 2026
 accepted Terms of Service for https://repo.anaconda.com/pkgs/main
 accepted Terms of Service for https://repo.anaconda.com/pkgs/r
 2 channel Terms of Service accepted
+Retrieving notices: ...working... done
 Channels:
  - defaults
 Platform: linux-aarch64
@@ -10,7 +11,7 @@ Solving environment: ...working... done
 
 ## Package Plan ##
 
-  environment location: /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
+  environment location: /temp/mgon_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
 
   added / updated specs:
     - python=3.12
@@ -97,7 +98,7 @@ Executing transaction: ...working... done
 #
 # To activate this environment, use
 #
-#     $ conda activate /scratch/clly_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
+#     $ conda activate /temp/mgon_MY_OWN_MINICONDA_MARCH26/Miniconda3-py313_26.7.1-1-Linux-aarch64/envs/newpy_pip
 #
 # To deactivate an active environment, use
 #
@@ -115,7 +116,7 @@ Collecting pydantic>=2.9 (from ollama)
 Collecting anyio (from httpx>=0.27->ollama)
   Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
 Collecting certifi (from httpx>=0.27->ollama)
-  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+  Downloading certifi-2026.11.20-py3-none-any.whl.metadata (2.5 kB)
 Collecting httpcore==1.* (from httpx>=0.27->ollama)
   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
 Collecting idna (from httpx>=0.27->ollama)
@@ -137,17 +138,18 @@ Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
 Downloading pydantic-2.14.4-py3-none-any.whl (494 kB)
 Downloading pydantic_core-2.50.5-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (2.1 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 10.4 MB/s  0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 84.8 MB/s  0:00:00
 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
 Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
 Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
 Downloading idna-3.20-py3-none-any.whl (69 kB)
-Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading certifi-2026.11.20-py3-none-any.whl (127 kB)
 Installing collected packages: typing-extensions, tqdm, idna, h11, certifi, annotated-types, typing-inspection, pydantic-core, httpcore, anyio, pydantic, httpx, ollama
 
-Successfully installed annotated-types-0.8.0 anyio-4.16.0 certifi-2026.10.23 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 ollama-0.6.3 pydantic-2.14.4 pydantic-core-2.50.5 tqdm-4.70.1 typing-extensions-4.16.0 typing-inspection-0.4.5
+Successfully installed annotated-types-0.8.0 anyio-4.16.0 certifi-2026.11.20 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 ollama-0.6.3 pydantic-2.14.4 pydantic-core-2.50.5 tqdm-4.70.1 typing-extensions-4.16.0 typing-inspection-0.4.5
 testing the environment
 tqdm version: 4.70.1
-FINISH: Sat Nov 21 12:41:41 UTC 2026
+finished
+FINISH: Mon Nov 23 06:14:20 CET 2026
 DONE
