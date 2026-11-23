@@ -38,6 +38,24 @@ uv run python3 src/consolidate_data.py \
   --output_path data/output/consolidated \
 ```
 
+```bash
+uv run python3 scripts/sample_for_review.py \
+  --input "data/output/converted/llama3:8b/open/responses.jsonl" \
+  -n 200 --seed 42 --parts 2 --part 1 -o data/review_llama3_open_part1.pdf
+
+uv run python3 scripts/sample_for_review.py \
+  --input "data/output/converted/llama3:8b/open/responses.jsonl" \
+  -n 200 --seed 42 --parts 2 --part 2 -o data/review_llama3_open_part2.pdf
+```
+```bash
+uv run python3 scripts/sample_for_review.py \
+  --input "data/output/converted/olmo-3:7b-instruct/open/responses.jsonl" \
+  -n 200 --seed 43 --parts 2 --part 1 -o data/review_olmo_open_part1.pdf
+
+uv run python3 scripts/sample_for_review.py \
+  --input "data/output/converted/olmo-3:7b-instruct/open/responses.jsonl" \
+  -n 200 --seed 43 --parts 2 --part 2 -o data/review_olmo_open_part2.pdf
+```
 
 
 Generated responses are written to `../data/output/responses.jsonl`, one JSON
